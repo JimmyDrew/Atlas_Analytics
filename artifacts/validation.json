@@ -1,0 +1,9 @@
+{
+  "retail_row_partition": true,
+  "retail_sql_total": true,
+  "retail_order_reconciliation": true,
+  "bike_sql_total": true,
+  "bike_components_and_daily_reconciliation": true,
+  "energy_sql_total": true,
+  "energy_cadence": true
+}

@@ -1,0 +1,1617 @@
+{
+  "generated_utc": "2026-09-30T22:03:07.062119+00:00",
+  "mode": "deterministic",
+  "metrics": {
+    "retail": {
+      "source_rows": 541909,
+      "gross_gbp": 10666684.544,
+      "credits_gbp": 896812.49,
+      "net_gbp": 9769872.054,
+      "orders": 19960,
+      "gross_order_value_gbp": 534.403033266533,
+      "identified_customers": 4338,
+      "repeat_customer_share": 0.6558321807284463
+    },
+    "bike": {
+      "source_rows": 17379,
+      "rentals": 3292679,
+      "mean_rentals_observed_hour": 189.46308763450142
+    },
+    "energy": {
+      "source_rows": 19735,
+      "appliance_kwh": 1928.01,
+      "complete_days": 136,
+      "partial_days": 2,
+      "mean_complete_day_kwh": 14.025073529411763
+    }
+  },
+  "quality": {
+    "retail": {
+      "rows": 541909,
+      "exact_duplicate_rows": 5268,
+      "missing": {
+        "Description": 1454,
+        "CustomerID": 135080
+      },
+      "partitions": {
+        "sale": 530104,
+        "credit": 9288,
+        "excluded": 2517
+      },
+      "excluded_signed_value_gbp": -22124.12
+    },
+    "bike": {
+      "rows": 17379,
+      "exact_duplicate_rows": 0,
+      "missing": {},
+      "missing_hours": 165
+    },
+    "energy": {
+      "rows": 19735,
+      "exact_duplicate_rows": 0,
+      "missing": {},
+      "non_10_minute_gaps": 0
+    }
+  },
+  "checks": {
+    "retail_row_partition": true,
+    "retail_sql_total": true,
+    "retail_order_reconciliation": true,
+    "bike_sql_total": true,
+    "bike_components_and_daily_reconciliation": true,
+    "energy_sql_total": true,
+    "energy_cadence": true
+  },
+  "baseline_evaluation": {
+    "bike": {
+      "train_rows": 13903,
+      "test_rows": 3476,
+      "test_start": "2012-08-07 12:00:00",
+      "seasonal_mae": 101.37589923464738,
+      "constant_mean_mae": 174.98460136882977,
+      "note": "First 80% trains group means; final 20% tests. Descriptive baseline comparison, not a tuned model."
+    },
+    "energy": {
+      "train_rows": 15788,
+      "test_rows": 3947,
+      "test_start": "2016-04-30 08:20:00",
+      "seasonal_mae": 46.95422247194003,
+      "constant_mean_mae": 52.684938078385834,
+      "note": "First 80% trains group means; final 20% tests. Descriptive baseline comparison, not a tuned model."
+    }
+  },
+  "limitations": {
+    "retail": "Recorded transaction value in GBP, not profit or accounting revenue. Exact duplicates retained because repeated lines may be legitimate. Positive-price sales and cancellation credits only; other adjustments excluded. Missing customers retained for sales, excluded from repeat-customer metrics. December 2011 is partial.",
+    "bike": "Observed rentals in one system, not unique riders or unmet demand. Missing hours remain missing. Profiles average observed hours only. No causal or station-level conclusions.",
+    "energy": "One dwelling over part of a year. Appliances is Wh per 10-minute interval; sum/1000 yields kWh. Lighting is separate. Partial days excluded from complete-day averages. No demonstrated savings or annual generalization."
+  },
+  "tables": {
+    "bike_hourly": [
+      {
+        "hr": 0,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 90.8
+      },
+      {
+        "hr": 0,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 36.7862903226
+      },
+      {
+        "hr": 1,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 69.5086956522
+      },
+      {
+        "hr": 1,
+        "workingday": 1,
+        "observed_hours": 494,
+        "mean_rentals": 16.5526315789
+      },
+      {
+        "hr": 2,
+        "workingday": 0,
+        "observed_hours": 228,
+        "mean_rentals": 53.1710526316
+      },
+      {
+        "hr": 2,
+        "workingday": 1,
+        "observed_hours": 487,
+        "mean_rentals": 8.6837782341
+      },
+      {
+        "hr": 3,
+        "workingday": 0,
+        "observed_hours": 227,
+        "mean_rentals": 25.7753303965
+      },
+      {
+        "hr": 3,
+        "workingday": 1,
+        "observed_hours": 470,
+        "mean_rentals": 4.9425531915
+      },
+      {
+        "hr": 4,
+        "workingday": 0,
+        "observed_hours": 227,
+        "mean_rentals": 8.2643171806
+      },
+      {
+        "hr": 4,
+        "workingday": 1,
+        "observed_hours": 470,
+        "mean_rentals": 5.429787234
+      },
+      {
+        "hr": 5,
+        "workingday": 0,
+        "observed_hours": 222,
+        "mean_rentals": 8.6891891892
+      },
+      {
+        "hr": 5,
+        "workingday": 1,
+        "observed_hours": 495,
+        "mean_rentals": 24.9131313131
+      },
+      {
+        "hr": 6,
+        "workingday": 0,
+        "observed_hours": 229,
+        "mean_rentals": 18.7423580786
+      },
+      {
+        "hr": 6,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 102.5
+      },
+      {
+        "hr": 7,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 43.4069264069
+      },
+      {
+        "hr": 7,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 290.6129032258
+      },
+      {
+        "hr": 8,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 105.6536796537
+      },
+      {
+        "hr": 8,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 477.0060483871
+      },
+      {
+        "hr": 9,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 171.6233766234
+      },
+      {
+        "hr": 9,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 241.5181451613
+      },
+      {
+        "hr": 10,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 255.9090909091
+      },
+      {
+        "hr": 10,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 135.3669354839
+      },
+      {
+        "hr": 11,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 315.316017316
+      },
+      {
+        "hr": 11,
+        "workingday": 1,
+        "observed_hours": 496,
+        "mean_rentals": 158.2298387097
+      },
+      {
+        "hr": 12,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 366.2597402597
+      },
+      {
+        "hr": 12,
+        "workingday": 1,
+        "observed_hours": 497,
+        "mean_rentals": 200.8209255533
+      },
+      {
+        "hr": 13,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 372.7316017316
+      },
+      {
+        "hr": 13,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 198.4297188755
+      },
+      {
+        "hr": 14,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 364.645021645
+      },
+      {
+        "hr": 14,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 183.5722891566
+      },
+      {
+        "hr": 15,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 358.8138528139
+      },
+      {
+        "hr": 15,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 201.3313253012
+      },
+      {
+        "hr": 16,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 352.7272727273
+      },
+      {
+        "hr": 16,
+        "workingday": 1,
+        "observed_hours": 499,
+        "mean_rentals": 293.122244489
+      },
+      {
+        "hr": 17,
+        "workingday": 0,
+        "observed_hours": 231,
+        "mean_rentals": 323.5497835498
+      },
+      {
+        "hr": 17,
+        "workingday": 1,
+        "observed_hours": 499,
+        "mean_rentals": 525.2905811623
+      },
+      {
+        "hr": 18,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 281.0565217391
+      },
+      {
+        "hr": 18,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 492.2269076305
+      },
+      {
+        "hr": 19,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 231.6739130435
+      },
+      {
+        "hr": 19,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 348.4016064257
+      },
+      {
+        "hr": 20,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 174.7391304348
+      },
+      {
+        "hr": 20,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 249.718875502
+      },
+      {
+        "hr": 21,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 142.0608695652
+      },
+      {
+        "hr": 21,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 186.2871485944
+      },
+      {
+        "hr": 22,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 116.0608695652
+      },
+      {
+        "hr": 22,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 138.3895582329
+      },
+      {
+        "hr": 23,
+        "workingday": 0,
+        "observed_hours": 230,
+        "mean_rentals": 85.9304347826
+      },
+      {
+        "hr": 23,
+        "workingday": 1,
+        "observed_hours": 498,
+        "mean_rentals": 88.7088353414
+      }
+    ],
+    "bike_monthly": [
+      {
+        "month": "2011-01",
+        "rentals": 38189,
+        "observed_hours": 688
+      },
+      {
+        "month": "2011-02",
+        "rentals": 48215,
+        "observed_hours": 649
+      },
+      {
+        "month": "2011-03",
+        "rentals": 64045,
+        "observed_hours": 730
+      },
+      {
+        "month": "2011-04",
+        "rentals": 94870,
+        "observed_hours": 719
+      },
+      {
+        "month": "2011-05",
+        "rentals": 135821,
+        "observed_hours": 744
+      },
+      {
+        "month": "2011-06",
+        "rentals": 143512,
+        "observed_hours": 720
+      },
+      {
+        "month": "2011-07",
+        "rentals": 141341,
+        "observed_hours": 744
+      },
+      {
+        "month": "2011-08",
+        "rentals": 136691,
+        "observed_hours": 731
+      },
+      {
+        "month": "2011-09",
+        "rentals": 127418,
+        "observed_hours": 717
+      },
+      {
+        "month": "2011-10",
+        "rentals": 123511,
+        "observed_hours": 743
+      },
+      {
+        "month": "2011-11",
+        "rentals": 102167,
+        "observed_hours": 719
+      },
+      {
+        "month": "2011-12",
+        "rentals": 87323,
+        "observed_hours": 741
+      },
+      {
+        "month": "2012-01",
+        "rentals": 96744,
+        "observed_hours": 741
+      },
+      {
+        "month": "2012-02",
+        "rentals": 103137,
+        "observed_hours": 692
+      },
+      {
+        "month": "2012-03",
+        "rentals": 164875,
+        "observed_hours": 743
+      },
+      {
+        "month": "2012-04",
+        "rentals": 174224,
+        "observed_hours": 718
+      },
+      {
+        "month": "2012-05",
+        "rentals": 195865,
+        "observed_hours": 744
+      },
+      {
+        "month": "2012-06",
+        "rentals": 202830,
+        "observed_hours": 720
+      },
+      {
+        "month": "2012-07",
+        "rentals": 203607,
+        "observed_hours": 744
+      },
+      {
+        "month": "2012-08",
+        "rentals": 214503,
+        "observed_hours": 744
+      },
+      {
+        "month": "2012-09",
+        "rentals": 218573,
+        "observed_hours": 720
+      },
+      {
+        "month": "2012-10",
+        "rentals": 198841,
+        "observed_hours": 708
+      },
+      {
+        "month": "2012-11",
+        "rentals": 152664,
+        "observed_hours": 718
+      },
+      {
+        "month": "2012-12",
+        "rentals": 123713,
+        "observed_hours": 742
+      }
+    ],
+    "energy_daily": [
+      {
+        "day": "2016-01-11",
+        "observations": 42,
+        "appliance_kwh": 5.74,
+        "lighting_kwh": 1.26
+      },
+      {
+        "day": "2016-01-12",
+        "observations": 144,
+        "appliance_kwh": 12.34,
+        "lighting_kwh": 0.61
+      },
+      {
+        "day": "2016-01-13",
+        "observations": 144,
+        "appliance_kwh": 13.97,
+        "lighting_kwh": 0.78
+      },
+      {
+        "day": "2016-01-14",
+        "observations": 144,
+        "appliance_kwh": 21.8,
+        "lighting_kwh": 0.72
+      },
+      {
+        "day": "2016-01-15",
+        "observations": 144,
+        "appliance_kwh": 18.05,
+        "lighting_kwh": 0.86
+      },
+      {
+        "day": "2016-01-16",
+        "observations": 144,
+        "appliance_kwh": 18.04,
+        "lighting_kwh": 1.15
+      },
+      {
+        "day": "2016-01-17",
+        "observations": 144,
+        "appliance_kwh": 20.55,
+        "lighting_kwh": 0.71
+      },
+      {
+        "day": "2016-01-18",
+        "observations": 144,
+        "appliance_kwh": 13.53,
+        "lighting_kwh": 0.49
+      },
+      {
+        "day": "2016-01-19",
+        "observations": 144,
+        "appliance_kwh": 11.99,
+        "lighting_kwh": 0.39
+      },
+      {
+        "day": "2016-01-20",
+        "observations": 144,
+        "appliance_kwh": 16.48,
+        "lighting_kwh": 0.84
+      },
+      {
+        "day": "2016-01-21",
+        "observations": 144,
+        "appliance_kwh": 13.34,
+        "lighting_kwh": 0.59
+      },
+      {
+        "day": "2016-01-22",
+        "observations": 144,
+        "appliance_kwh": 6.58,
+        "lighting_kwh": 0.1
+      },
+      {
+        "day": "2016-01-23",
+        "observations": 144,
+        "appliance_kwh": 13.4,
+        "lighting_kwh": 0.7
+      },
+      {
+        "day": "2016-01-24",
+        "observations": 144,
+        "appliance_kwh": 21.64,
+        "lighting_kwh": 1.43
+      },
+      {
+        "day": "2016-01-25",
+        "observations": 144,
+        "appliance_kwh": 9.47,
+        "lighting_kwh": 0.35
+      },
+      {
+        "day": "2016-01-26",
+        "observations": 144,
+        "appliance_kwh": 10.27,
+        "lighting_kwh": 0.52
+      },
+      {
+        "day": "2016-01-27",
+        "observations": 144,
+        "appliance_kwh": 6.57,
+        "lighting_kwh": 0.09
+      },
+      {
+        "day": "2016-01-28",
+        "observations": 144,
+        "appliance_kwh": 5.4,
+        "lighting_kwh": 0.0
+      },
+      {
+        "day": "2016-01-29",
+        "observations": 144,
+        "appliance_kwh": 6.92,
+        "lighting_kwh": 0.1
+      },
+      {
+        "day": "2016-01-30",
+        "observations": 144,
+        "appliance_kwh": 18.79,
+        "lighting_kwh": 0.43
+      },
+      {
+        "day": "2016-01-31",
+        "observations": 144,
+        "appliance_kwh": 18.64,
+        "lighting_kwh": 1.68
+      },
+      {
+        "day": "2016-02-01",
+        "observations": 144,
+        "appliance_kwh": 22.45,
+        "lighting_kwh": 2.18
+      },
+      {
+        "day": "2016-02-02",
+        "observations": 144,
+        "appliance_kwh": 11.22,
+        "lighting_kwh": 2.15
+      },
+      {
+        "day": "2016-02-03",
+        "observations": 144,
+        "appliance_kwh": 19.14,
+        "lighting_kwh": 1.18
+      },
+      {
+        "day": "2016-02-04",
+        "observations": 144,
+        "appliance_kwh": 14.45,
+        "lighting_kwh": 1.36
+      },
+      {
+        "day": "2016-02-05",
+        "observations": 144,
+        "appliance_kwh": 9.01,
+        "lighting_kwh": 0.35
+      },
+      {
+        "day": "2016-02-06",
+        "observations": 144,
+        "appliance_kwh": 11.98,
+        "lighting_kwh": 0.31
+      },
+      {
+        "day": "2016-02-07",
+        "observations": 144,
+        "appliance_kwh": 11.43,
+        "lighting_kwh": 0.79
+      },
+      {
+        "day": "2016-02-08",
+        "observations": 144,
+        "appliance_kwh": 21.22,
+        "lighting_kwh": 1.44
+      },
+      {
+        "day": "2016-02-09",
+        "observations": 144,
+        "appliance_kwh": 18.11,
+        "lighting_kwh": 0.47
+      },
+      {
+        "day": "2016-02-10",
+        "observations": 144,
+        "appliance_kwh": 13.88,
+        "lighting_kwh": 0.75
+      },
+      {
+        "day": "2016-02-11",
+        "observations": 144,
+        "appliance_kwh": 15.3,
+        "lighting_kwh": 0.92
+      },
+      {
+        "day": "2016-02-12",
+        "observations": 144,
+        "appliance_kwh": 16.97,
+        "lighting_kwh": 0.57
+      },
+      {
+        "day": "2016-02-13",
+        "observations": 144,
+        "appliance_kwh": 13.84,
+        "lighting_kwh": 0.42
+      },
+      {
+        "day": "2016-02-14",
+        "observations": 144,
+        "appliance_kwh": 14.75,
+        "lighting_kwh": 1.61
+      },
+      {
+        "day": "2016-02-15",
+        "observations": 144,
+        "appliance_kwh": 16.95,
+        "lighting_kwh": 1.65
+      },
+      {
+        "day": "2016-02-16",
+        "observations": 144,
+        "appliance_kwh": 13.42,
+        "lighting_kwh": 0.84
+      },
+      {
+        "day": "2016-02-17",
+        "observations": 144,
+        "appliance_kwh": 9.62,
+        "lighting_kwh": 0.21
+      },
+      {
+        "day": "2016-02-18",
+        "observations": 144,
+        "appliance_kwh": 12.06,
+        "lighting_kwh": 0.84
+      },
+      {
+        "day": "2016-02-19",
+        "observations": 144,
+        "appliance_kwh": 17.15,
+        "lighting_kwh": 0.2
+      },
+      {
+        "day": "2016-02-20",
+        "observations": 144,
+        "appliance_kwh": 14.51,
+        "lighting_kwh": 0.53
+      },
+      {
+        "day": "2016-02-21",
+        "observations": 144,
+        "appliance_kwh": 12.76,
+        "lighting_kwh": 1.78
+      },
+      {
+        "day": "2016-02-22",
+        "observations": 144,
+        "appliance_kwh": 13.45,
+        "lighting_kwh": 1.12
+      },
+      {
+        "day": "2016-02-23",
+        "observations": 144,
+        "appliance_kwh": 12.77,
+        "lighting_kwh": 1.03
+      },
+      {
+        "day": "2016-02-24",
+        "observations": 144,
+        "appliance_kwh": 11.23,
+        "lighting_kwh": 0.67
+      },
+      {
+        "day": "2016-02-25",
+        "observations": 144,
+        "appliance_kwh": 18.01,
+        "lighting_kwh": 1.69
+      },
+      {
+        "day": "2016-02-26",
+        "observations": 144,
+        "appliance_kwh": 13.55,
+        "lighting_kwh": 0.26
+      },
+      {
+        "day": "2016-02-27",
+        "observations": 144,
+        "appliance_kwh": 11.99,
+        "lighting_kwh": 0.3
+      },
+      {
+        "day": "2016-02-28",
+        "observations": 144,
+        "appliance_kwh": 7.7,
+        "lighting_kwh": 0.11
+      },
+      {
+        "day": "2016-02-29",
+        "observations": 144,
+        "appliance_kwh": 22.63,
+        "lighting_kwh": 0.76
+      },
+      {
+        "day": "2016-03-01",
+        "observations": 144,
+        "appliance_kwh": 10.42,
+        "lighting_kwh": 0.72
+      },
+      {
+        "day": "2016-03-02",
+        "observations": 144,
+        "appliance_kwh": 13.36,
+        "lighting_kwh": 0.6
+      },
+      {
+        "day": "2016-03-03",
+        "observations": 144,
+        "appliance_kwh": 11.81,
+        "lighting_kwh": 1.05
+      },
+      {
+        "day": "2016-03-04",
+        "observations": 144,
+        "appliance_kwh": 13.73,
+        "lighting_kwh": 0.31
+      },
+      {
+        "day": "2016-03-05",
+        "observations": 144,
+        "appliance_kwh": 13.16,
+        "lighting_kwh": 0.58
+      },
+      {
+        "day": "2016-03-06",
+        "observations": 144,
+        "appliance_kwh": 12.92,
+        "lighting_kwh": 0.61
+      },
+      {
+        "day": "2016-03-07",
+        "observations": 144,
+        "appliance_kwh": 20.54,
+        "lighting_kwh": 0.56
+      },
+      {
+        "day": "2016-03-08",
+        "observations": 144,
+        "appliance_kwh": 10.77,
+        "lighting_kwh": 0.84
+      },
+      {
+        "day": "2016-03-09",
+        "observations": 144,
+        "appliance_kwh": 12.5,
+        "lighting_kwh": 0.86
+      },
+      {
+        "day": "2016-03-10",
+        "observations": 144,
+        "appliance_kwh": 13.38,
+        "lighting_kwh": 0.9
+      },
+      {
+        "day": "2016-03-11",
+        "observations": 144,
+        "appliance_kwh": 10.23,
+        "lighting_kwh": 0.45
+      },
+      {
+        "day": "2016-03-12",
+        "observations": 144,
+        "appliance_kwh": 14.2,
+        "lighting_kwh": 0.39
+      },
+      {
+        "day": "2016-03-13",
+        "observations": 144,
+        "appliance_kwh": 9.78,
+        "lighting_kwh": 0.33
+      },
+      {
+        "day": "2016-03-14",
+        "observations": 144,
+        "appliance_kwh": 23.62,
+        "lighting_kwh": 0.65
+      },
+      {
+        "day": "2016-03-15",
+        "observations": 144,
+        "appliance_kwh": 14.01,
+        "lighting_kwh": 0.81
+      },
+      {
+        "day": "2016-03-16",
+        "observations": 144,
+        "appliance_kwh": 22.81,
+        "lighting_kwh": 1.24
+      },
+      {
+        "day": "2016-03-17",
+        "observations": 144,
+        "appliance_kwh": 12.51,
+        "lighting_kwh": 1.08
+      },
+      {
+        "day": "2016-03-18",
+        "observations": 144,
+        "appliance_kwh": 9.02,
+        "lighting_kwh": 0.09
+      },
+      {
+        "day": "2016-03-19",
+        "observations": 144,
+        "appliance_kwh": 16.37,
+        "lighting_kwh": 0.18
+      },
+      {
+        "day": "2016-03-20",
+        "observations": 144,
+        "appliance_kwh": 16.15,
+        "lighting_kwh": 0.13
+      },
+      {
+        "day": "2016-03-21",
+        "observations": 144,
+        "appliance_kwh": 11.2,
+        "lighting_kwh": 0.86
+      },
+      {
+        "day": "2016-03-22",
+        "observations": 144,
+        "appliance_kwh": 10.24,
+        "lighting_kwh": 0.35
+      },
+      {
+        "day": "2016-03-23",
+        "observations": 144,
+        "appliance_kwh": 12.25,
+        "lighting_kwh": 0.78
+      },
+      {
+        "day": "2016-03-24",
+        "observations": 144,
+        "appliance_kwh": 10.1,
+        "lighting_kwh": 0.49
+      },
+      {
+        "day": "2016-03-25",
+        "observations": 144,
+        "appliance_kwh": 25.98,
+        "lighting_kwh": 0.28
+      },
+      {
+        "day": "2016-03-26",
+        "observations": 144,
+        "appliance_kwh": 15.69,
+        "lighting_kwh": 0.4
+      },
+      {
+        "day": "2016-03-27",
+        "observations": 144,
+        "appliance_kwh": 10.52,
+        "lighting_kwh": 0.08
+      },
+      {
+        "day": "2016-03-28",
+        "observations": 144,
+        "appliance_kwh": 18.33,
+        "lighting_kwh": 0.22
+      },
+      {
+        "day": "2016-03-29",
+        "observations": 144,
+        "appliance_kwh": 13.17,
+        "lighting_kwh": 0.74
+      },
+      {
+        "day": "2016-03-30",
+        "observations": 144,
+        "appliance_kwh": 12.63,
+        "lighting_kwh": 0.62
+      },
+      {
+        "day": "2016-03-31",
+        "observations": 144,
+        "appliance_kwh": 11.4,
+        "lighting_kwh": 0.28
+      },
+      {
+        "day": "2016-04-01",
+        "observations": 144,
+        "appliance_kwh": 8.58,
+        "lighting_kwh": 0.01
+      },
+      {
+        "day": "2016-04-02",
+        "observations": 144,
+        "appliance_kwh": 7.3,
+        "lighting_kwh": 0.0
+      },
+      {
+        "day": "2016-04-03",
+        "observations": 144,
+        "appliance_kwh": 10.34,
+        "lighting_kwh": 0.07
+      },
+      {
+        "day": "2016-04-04",
+        "observations": 144,
+        "appliance_kwh": 27.15,
+        "lighting_kwh": 0.54
+      },
+      {
+        "day": "2016-04-05",
+        "observations": 144,
+        "appliance_kwh": 22.3,
+        "lighting_kwh": 0.51
+      },
+      {
+        "day": "2016-04-06",
+        "observations": 144,
+        "appliance_kwh": 12.61,
+        "lighting_kwh": 0.85
+      },
+      {
+        "day": "2016-04-07",
+        "observations": 144,
+        "appliance_kwh": 9.91,
+        "lighting_kwh": 0.11
+      },
+      {
+        "day": "2016-04-08",
+        "observations": 144,
+        "appliance_kwh": 19.36,
+        "lighting_kwh": 0.24
+      },
+      {
+        "day": "2016-04-09",
+        "observations": 144,
+        "appliance_kwh": 15.15,
+        "lighting_kwh": 0.2
+      },
+      {
+        "day": "2016-04-10",
+        "observations": 144,
+        "appliance_kwh": 10.68,
+        "lighting_kwh": 0.11
+      },
+      {
+        "day": "2016-04-11",
+        "observations": 144,
+        "appliance_kwh": 11.21,
+        "lighting_kwh": 0.51
+      },
+      {
+        "day": "2016-04-12",
+        "observations": 144,
+        "appliance_kwh": 15.9,
+        "lighting_kwh": 0.35
+      },
+      {
+        "day": "2016-04-13",
+        "observations": 144,
+        "appliance_kwh": 13.57,
+        "lighting_kwh": 0.53
+      },
+      {
+        "day": "2016-04-14",
+        "observations": 144,
+        "appliance_kwh": 12.35,
+        "lighting_kwh": 0.7
+      },
+      {
+        "day": "2016-04-15",
+        "observations": 144,
+        "appliance_kwh": 18.92,
+        "lighting_kwh": 0.36
+      },
+      {
+        "day": "2016-04-16",
+        "observations": 144,
+        "appliance_kwh": 19.32,
+        "lighting_kwh": 0.05
+      },
+      {
+        "day": "2016-04-17",
+        "observations": 144,
+        "appliance_kwh": 15.25,
+        "lighting_kwh": 0.77
+      },
+      {
+        "day": "2016-04-18",
+        "observations": 144,
+        "appliance_kwh": 10.34,
+        "lighting_kwh": 0.71
+      },
+      {
+        "day": "2016-04-19",
+        "observations": 144,
+        "appliance_kwh": 10.43,
+        "lighting_kwh": 0.34
+      },
+      {
+        "day": "2016-04-20",
+        "observations": 144,
+        "appliance_kwh": 11.61,
+        "lighting_kwh": 0.41
+      },
+      {
+        "day": "2016-04-21",
+        "observations": 144,
+        "appliance_kwh": 11.07,
+        "lighting_kwh": 0.11
+      },
+      {
+        "day": "2016-04-22",
+        "observations": 144,
+        "appliance_kwh": 24.57,
+        "lighting_kwh": 0.34
+      },
+      {
+        "day": "2016-04-23",
+        "observations": 144,
+        "appliance_kwh": 15.12,
+        "lighting_kwh": 0.09
+      },
+      {
+        "day": "2016-04-24",
+        "observations": 144,
+        "appliance_kwh": 11.78,
+        "lighting_kwh": 0.17
+      },
+      {
+        "day": "2016-04-25",
+        "observations": 144,
+        "appliance_kwh": 10.82,
+        "lighting_kwh": 1.09
+      },
+      {
+        "day": "2016-04-26",
+        "observations": 144,
+        "appliance_kwh": 10.66,
+        "lighting_kwh": 0.09
+      },
+      {
+        "day": "2016-04-27",
+        "observations": 144,
+        "appliance_kwh": 10.81,
+        "lighting_kwh": 0.75
+      },
+      {
+        "day": "2016-04-28",
+        "observations": 144,
+        "appliance_kwh": 13.81,
+        "lighting_kwh": 0.25
+      },
+      {
+        "day": "2016-04-29",
+        "observations": 144,
+        "appliance_kwh": 16.06,
+        "lighting_kwh": 0.08
+      },
+      {
+        "day": "2016-04-30",
+        "observations": 144,
+        "appliance_kwh": 20.22,
+        "lighting_kwh": 0.1
+      },
+      {
+        "day": "2016-05-01",
+        "observations": 144,
+        "appliance_kwh": 14.09,
+        "lighting_kwh": 0.03
+      },
+      {
+        "day": "2016-05-02",
+        "observations": 144,
+        "appliance_kwh": 12.33,
+        "lighting_kwh": 0.4
+      },
+      {
+        "day": "2016-05-03",
+        "observations": 144,
+        "appliance_kwh": 10.04,
+        "lighting_kwh": 0.09
+      },
+      {
+        "day": "2016-05-04",
+        "observations": 144,
+        "appliance_kwh": 11.37,
+        "lighting_kwh": 0.16
+      },
+      {
+        "day": "2016-05-05",
+        "observations": 144,
+        "appliance_kwh": 12.1,
+        "lighting_kwh": 0.11
+      },
+      {
+        "day": "2016-05-06",
+        "observations": 144,
+        "appliance_kwh": 14.51,
+        "lighting_kwh": 0.16
+      },
+      {
+        "day": "2016-05-07",
+        "observations": 144,
+        "appliance_kwh": 13.99,
+        "lighting_kwh": 0.06
+      },
+      {
+        "day": "2016-05-08",
+        "observations": 144,
+        "appliance_kwh": 9.87,
+        "lighting_kwh": 0.03
+      },
+      {
+        "day": "2016-05-09",
+        "observations": 144,
+        "appliance_kwh": 12.25,
+        "lighting_kwh": 0.95
+      },
+      {
+        "day": "2016-05-10",
+        "observations": 144,
+        "appliance_kwh": 9.5,
+        "lighting_kwh": 0.05
+      },
+      {
+        "day": "2016-05-11",
+        "observations": 144,
+        "appliance_kwh": 10.67,
+        "lighting_kwh": 0.03
+      },
+      {
+        "day": "2016-05-12",
+        "observations": 144,
+        "appliance_kwh": 10.4,
+        "lighting_kwh": 0.08
+      },
+      {
+        "day": "2016-05-13",
+        "observations": 144,
+        "appliance_kwh": 24.28,
+        "lighting_kwh": 0.47
+      },
+      {
+        "day": "2016-05-14",
+        "observations": 144,
+        "appliance_kwh": 14.34,
+        "lighting_kwh": 0.07
+      },
+      {
+        "day": "2016-05-15",
+        "observations": 144,
+        "appliance_kwh": 14.98,
+        "lighting_kwh": 0.54
+      },
+      {
+        "day": "2016-05-16",
+        "observations": 144,
+        "appliance_kwh": 14.42,
+        "lighting_kwh": 0.34
+      },
+      {
+        "day": "2016-05-17",
+        "observations": 144,
+        "appliance_kwh": 9.51,
+        "lighting_kwh": 0.05
+      },
+      {
+        "day": "2016-05-18",
+        "observations": 144,
+        "appliance_kwh": 11.84,
+        "lighting_kwh": 0.32
+      },
+      {
+        "day": "2016-05-19",
+        "observations": 144,
+        "appliance_kwh": 10.08,
+        "lighting_kwh": 0.03
+      },
+      {
+        "day": "2016-05-20",
+        "observations": 144,
+        "appliance_kwh": 9.32,
+        "lighting_kwh": 0.8
+      },
+      {
+        "day": "2016-05-21",
+        "observations": 144,
+        "appliance_kwh": 23.28,
+        "lighting_kwh": 0.22
+      },
+      {
+        "day": "2016-05-22",
+        "observations": 144,
+        "appliance_kwh": 15.86,
+        "lighting_kwh": 0.04
+      },
+      {
+        "day": "2016-05-23",
+        "observations": 144,
+        "appliance_kwh": 11.96,
+        "lighting_kwh": 0.29
+      },
+      {
+        "day": "2016-05-24",
+        "observations": 144,
+        "appliance_kwh": 13.85,
+        "lighting_kwh": 0.61
+      },
+      {
+        "day": "2016-05-25",
+        "observations": 144,
+        "appliance_kwh": 12.08,
+        "lighting_kwh": 0.37
+      },
+      {
+        "day": "2016-05-26",
+        "observations": 144,
+        "appliance_kwh": 21.17,
+        "lighting_kwh": 0.45
+      },
+      {
+        "day": "2016-05-27",
+        "observations": 109,
+        "appliance_kwh": 14.86,
+        "lighting_kwh": 0.07
+      }
+    ],
+    "energy_hourly": [
+      {
+        "hour": 0,
+        "observations": 822,
+        "mean_wh": 52.7858880779
+      },
+      {
+        "hour": 1,
+        "observations": 822,
+        "mean_wh": 51.3260340633
+      },
+      {
+        "hour": 2,
+        "observations": 822,
+        "mean_wh": 49.0754257908
+      },
+      {
+        "hour": 3,
+        "observations": 822,
+        "mean_wh": 48.2360097324
+      },
+      {
+        "hour": 4,
+        "observations": 822,
+        "mean_wh": 49.3552311436
+      },
+      {
+        "hour": 5,
+        "observations": 822,
+        "mean_wh": 52.7372262774
+      },
+      {
+        "hour": 6,
+        "observations": 822,
+        "mean_wh": 57.7128953771
+      },
+      {
+        "hour": 7,
+        "observations": 822,
+        "mean_wh": 78.6496350365
+      },
+      {
+        "hour": 8,
+        "observations": 822,
+        "mean_wh": 106.1435523114
+      },
+      {
+        "hour": 9,
+        "observations": 822,
+        "mean_wh": 112.7858880779
+      },
+      {
+        "hour": 10,
+        "observations": 822,
+        "mean_wh": 125.3771289538
+      },
+      {
+        "hour": 11,
+        "observations": 822,
+        "mean_wh": 133.1265206813
+      },
+      {
+        "hour": 12,
+        "observations": 822,
+        "mean_wh": 123.6374695864
+      },
+      {
+        "hour": 13,
+        "observations": 822,
+        "mean_wh": 124.7445255474
+      },
+      {
+        "hour": 14,
+        "observations": 822,
+        "mean_wh": 108.2846715328
+      },
+      {
+        "hour": 15,
+        "observations": 822,
+        "mean_wh": 105.8272506083
+      },
+      {
+        "hour": 16,
+        "observations": 822,
+        "mean_wh": 119.902676399
+      },
+      {
+        "hour": 17,
+        "observations": 828,
+        "mean_wh": 161.3526570048
+      },
+      {
+        "hour": 18,
+        "observations": 823,
+        "mean_wh": 190.3645200486
+      },
+      {
+        "hour": 19,
+        "observations": 822,
+        "mean_wh": 143.0656934307
+      },
+      {
+        "hour": 20,
+        "observations": 822,
+        "mean_wh": 126.9829683698
+      },
+      {
+        "hour": 21,
+        "observations": 822,
+        "mean_wh": 96.496350365
+      },
+      {
+        "hour": 22,
+        "observations": 822,
+        "mean_wh": 69.1484184915
+      },
+      {
+        "hour": 23,
+        "observations": 822,
+        "mean_wh": 56.9829683698
+      }
+    ],
+    "retail_countries": [
+      {
+        "Country": "United Kingdom",
+        "gross_gbp": 9025222.084
+      },
+      {
+        "Country": "Netherlands",
+        "gross_gbp": 285446.34
+      },
+      {
+        "Country": "EIRE",
+        "gross_gbp": 283453.96
+      },
+      {
+        "Country": "Germany",
+        "gross_gbp": 228867.14
+      },
+      {
+        "Country": "France",
+        "gross_gbp": 209715.11
+      },
+      {
+        "Country": "Australia",
+        "gross_gbp": 138521.31
+      },
+      {
+        "Country": "Spain",
+        "gross_gbp": 61577.11
+      },
+      {
+        "Country": "Switzerland",
+        "gross_gbp": 57089.9
+      },
+      {
+        "Country": "Belgium",
+        "gross_gbp": 41196.34
+      },
+      {
+        "Country": "Sweden",
+        "gross_gbp": 38378.33
+      }
+    ],
+    "retail_monthly": [
+      {
+        "month": "2010-12",
+        "gross_gbp": 823746.14,
+        "credits_gbp": 74789.12,
+        "net_gbp": 748957.02,
+        "orders": 1559
+      },
+      {
+        "month": "2011-01",
+        "gross_gbp": 691364.56,
+        "credits_gbp": 131364.3,
+        "net_gbp": 560000.26,
+        "orders": 1086
+      },
+      {
+        "month": "2011-02",
+        "gross_gbp": 523631.89,
+        "credits_gbp": 25569.24,
+        "net_gbp": 498062.65,
+        "orders": 1100
+      },
+      {
+        "month": "2011-03",
+        "gross_gbp": 717639.36,
+        "credits_gbp": 34372.28,
+        "net_gbp": 683267.08,
+        "orders": 1454
+      },
+      {
+        "month": "2011-04",
+        "gross_gbp": 537808.621,
+        "credits_gbp": 44601.5,
+        "net_gbp": 493207.121,
+        "orders": 1246
+      },
+      {
+        "month": "2011-05",
+        "gross_gbp": 770536.02,
+        "credits_gbp": 47202.51,
+        "net_gbp": 723333.51,
+        "orders": 1681
+      },
+      {
+        "month": "2011-06",
+        "gross_gbp": 761739.9,
+        "credits_gbp": 70616.78,
+        "net_gbp": 691123.12,
+        "orders": 1533
+      },
+      {
+        "month": "2011-07",
+        "gross_gbp": 719221.191,
+        "credits_gbp": 37921.08,
+        "net_gbp": 681300.111,
+        "orders": 1475
+      },
+      {
+        "month": "2011-08",
+        "gross_gbp": 759138.38,
+        "credits_gbp": 54333.75,
+        "net_gbp": 704804.63,
+        "orders": 1361
+      },
+      {
+        "month": "2011-09",
+        "gross_gbp": 1058590.172,
+        "credits_gbp": 38902.55,
+        "net_gbp": 1019687.622,
+        "orders": 1837
+      },
+      {
+        "month": "2011-10",
+        "gross_gbp": 1154979.3,
+        "credits_gbp": 84274.63,
+        "net_gbp": 1070704.67,
+        "orders": 2040
+      },
+      {
+        "month": "2011-11",
+        "gross_gbp": 1509496.33,
+        "credits_gbp": 47740.08,
+        "net_gbp": 1461756.25,
+        "orders": 2769
+      },
+      {
+        "month": "2011-12",
+        "gross_gbp": 638792.68,
+        "credits_gbp": 205124.67,
+        "net_gbp": 433668.01,
+        "orders": 819
+      }
+    ]
+  },
+  "sql": {
+    "bike_hourly.sql": "SELECT hr, workingday, COUNT(*) AS observed_hours, AVG(cnt) AS mean_rentals\nFROM bike GROUP BY hr, workingday ORDER BY hr, workingday;",
+    "bike_monthly.sql": "SELECT substr(dteday,1,7) AS month, SUM(cnt) AS rentals, COUNT(*) AS observed_hours\nFROM bike GROUP BY month ORDER BY month;",
+    "energy_daily.sql": "SELECT substr(date,1,10) AS day, COUNT(*) AS observations,\n SUM(Appliances)/1000.0 AS appliance_kwh,\n SUM(lights)/1000.0 AS lighting_kwh\nFROM energy GROUP BY day ORDER BY day;",
+    "energy_hourly.sql": "SELECT CAST(substr(date,12,2) AS INTEGER) AS hour,\n COUNT(*) AS observations, AVG(Appliances) AS mean_wh\nFROM energy GROUP BY hour ORDER BY hour;",
+    "retail_countries.sql": "SELECT Country, SUM(value) AS gross_gbp FROM retail\nWHERE category='sale' GROUP BY Country ORDER BY gross_gbp DESC LIMIT 10;",
+    "retail_monthly.sql": "SELECT substr(InvoiceDate,1,7) AS month,\n SUM(CASE WHEN category='sale' THEN value ELSE 0 END) AS gross_gbp,\n -SUM(CASE WHEN category='credit' THEN value ELSE 0 END) AS credits_gbp,\n SUM(CASE WHEN category IN ('sale','credit') THEN value ELSE 0 END) AS net_gbp,\n COUNT(DISTINCT CASE WHEN category='sale' THEN InvoiceNo END) AS orders\nFROM retail GROUP BY month ORDER BY month;"
+  },
+  "source_manifest": {
+    "retail": {
+      "url": "https://archive.ics.uci.edu/static/public/352/online+retail.zip",
+      "archive_sha256": "f5385cbb54bbebf7196389109c6b0621faab0c304e3702548165e71c84aede8b",
+      "file_sha256": "43465a06f2ccf7c8b5bd2892bc7defb52f97487934fe93b16ae4c3936424676d",
+      "bytes": 23715344
+    },
+    "bike": {
+      "url": "https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip",
+      "archive_sha256": "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401",
+      "file_sha256": "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f",
+      "bytes": 1156736
+    },
+    "energy": {
+      "url": "https://archive.ics.uci.edu/static/public/374/appliances+energy+prediction.zip",
+      "archive_sha256": "2fccf354445d886e7917620b0195db1f3e3e34d5a067a93b844694a4c561255a",
+      "file_sha256": "2820bf712ad0275cb18b85a05250926100d8e65ebb9f4d2d016ca91ea152a25d",
+      "bytes": 11979363
+    }
+  }
+}

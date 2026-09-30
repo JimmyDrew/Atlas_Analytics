@@ -151,6 +151,7 @@ activemq-data/
 .env
 .envrc
 .venv
+.venv-broken-*/
 env/
 venv/
 ENV/
@@ -208,6 +209,21 @@ tempCodeRunnerFile.py
 
 # PyPI configuration file
 .pypirc
+
+# Atlas Analytics local data and private run state
+data/raw/
+artifacts/analytics.sqlite
+artifacts/submissions/
+artifacts/agents/
+pyvenv.cfg
+
+# Local secrets and editor metadata
+.env.*
+*.key
+.vscode/
+.idea/
+Thumbs.db
+Desktop.ini
 
 # Marimo
 marimo/_static/
